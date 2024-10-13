@@ -1,6 +1,8 @@
 # ubersicht-nasa-image
 Display NASA's Astronomy Picture of the Day (APOD) on your macOS desktop!
 
+It even works without internet by falling back to the famous "Pale Blue Dot" photo. (As seen below)
+
 ![SCR-20241012-taio](https://github.com/user-attachments/assets/f641405f-3269-47e9-a53c-b0e4830c7b56)
 
 # Dependencies
@@ -17,6 +19,6 @@ Installing this is super easy! Just follow the steps below:
 # Configuration
 To configure the widget, open the apod/main.jsx file. You should see a CONFIG section at the top of the file.
 
-You'll need to paste your NASA API key in for the apiKey option. You can get an API key <a href="https://api.nasa.gov/">here</a>. 
+You'll need to paste your NASA API key in for the apiKey option. You can get an API key for free <a href="https://api.nasa.gov/">here</a>. 
 
 The rest of the options are explained in the file itself.
