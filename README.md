@@ -1,7 +1,7 @@
 # ubersicht-nasa-image
 Display NASA's Astronomy Picture of the Day (APOD) on your macOS desktop!
 
-It even works without internet by falling back to the famous "Pale Blue Dot" photo. (As seen below)
+It even works without internet by falling back to the famous "Pale Blue Dot" photo (As seen below). The widget is also interactable, you can click on it to view today's picture in your browser.
 
 ![SCR-20241012-taio](https://github.com/user-attachments/assets/f641405f-3269-47e9-a53c-b0e4830c7b56)
 
