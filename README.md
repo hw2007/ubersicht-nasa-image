@@ -17,9 +17,9 @@ Installing this is super easy! Just follow the steps below:
 4. You will need to get a NASA API key for the widget to work. Read the configuration section below.
 
 # Configuration
-To configure the widget, open the apod/main.jsx file. You should see a CONFIG section at the top of the file.
+To configure the widget, edit the apod/config.json file.
 
-You'll need to paste your NASA API key in for the apiKey option. You can get an API key for free <a href="https://api.nasa.gov/">here</a>. 
+You'll need to paste your NASA API key in for the `apiKey` option. You can get an API key for free <a href="https://api.nasa.gov/">here</a>. 
 
 Description of each option:
 
