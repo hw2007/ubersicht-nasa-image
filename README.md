@@ -23,4 +23,16 @@ To configure the widget, open the apod/main.jsx file. You should see a CONFIG se
 
 You'll need to paste your NASA API key in for the apiKey option. You can get an API key for free <a href="https://api.nasa.gov/">here</a>. 
 
-The rest of the options are explained in the file itself.
+Description of each option:
+
+`apiKey` Your NASA API key. Required for the widget to work.
+
+`showApodText` Wether or not to show the text in the bottom-right of the widget which says "NASA Astronomy Picture of the Day". Default `true`.
+
+`displayErrorsInApodText` Wether or not to repurpose the APOD text for displaying errors, such as "Connection error! Did you supply an API key?" when the widget can't connect to the NASA API. Has no effect when `showApodText` is `false`. Default `true`.
+
+`showTitle` Wether or not to show the title of the APOD in the bottom-left corner. Default `true`.
+
+`showVideoPlayButton` Wether or not to show a play button in the middle of the widget if the APOD is a video. Default `true`.
+
+`widgetPosition` CSS positioning of the widget. Default `{"top": 300, "bottom": "auto", "left": 0, "right": "auto}`.
