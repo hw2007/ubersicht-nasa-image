@@ -1,31 +1,19 @@
-// ----- CONFIG -----
+const CONFIG = require("./config");
 
-// Paste your NASA API key here!
-// You can get one for free at https://api.nasa.gov/
-const apiKey = "Your API key goes here";
-// Show the text "NASA Astronomy Picture of the Day" in the bottom-right corner
-const showApodText = true;
-// Show the title of the picture in the bottom-left corner
-const showTitle = true;
-// Position of the widget. If you know how to position something with postion: fixed in CSS, you know how to use this.
-const position = {
-	"top": 0,
-	"bottom": "auto",
-	"left": 0,
-	"right": "auto"
-};
+export const command = `curl -s 'https://api.nasa.gov/planetary/apod?api_key=${CONFIG["apiKey"]}&thumbs=true' | jq -r '.url + "," + .title + "," + .media_type + "," + (.thumbnail_url // "")'`;
 
-// ----- END OF CONFIG -----
-
-export const command = `curl -s 'https://api.nasa.gov/planetary/apod?api_key=${apiKey}' | jq -r '.url + "," + .title'`;
-
-export const refreshFrequency = 3600000 // ms
+export const refreshFrequency = 3600000 // updates hourly
 
 
 export const render = ({ output }) => {
-	const [imgUrl, title] = output.split(",");
-	console.log(imgUrl);
-	console.log(title);
+	const [imgUrl, title, media_type, thumbnailUrl] = output.split(",");
+	const is_video = (media_type && (media_type.trim() === "video"));
+	
+	console.log("APOD URL: " + imgUrl);
+	console.log("APOD Title: " + title);
+	console.log("APOD Type: " + media_type);
+	console.log("APOD Is Video?: " + is_video)
+	console.log("APOD Video Thumbnail: " + thumbnailUrl);
 
   	return (
 		<a
@@ -41,26 +29,50 @@ export const render = ({ output }) => {
 				color: "white",
 				textShadow: "0px 1px 4px rgba(0, 0, 0, 0.8)",
 				fontSize: 13,
-				top: position["top"],
-				bottom: position["bottom"],
-				left: position["left"],
-				right: position["right"]
+				top: CONFIG["widgetPosition"]["top"],
+				bottom: CONFIG["widgetPosition"]["bottom"],
+				left: CONFIG["widgetPosition"]["left"],
+				right: CONFIG["widgetPosition"]["right"]
 			}}
 		>
 			<p style={{
-				position: "absolute",
-				bottom: 0,
-				left: 16
-			}}><b>{showTitle ? (title ? title : "Pale Blue Dot") : ""}</b></p>
+					position: "absolute",
+					bottom: 0,
+					left: 16,
+					maxWidth: 290
+				}}><b>{CONFIG["showTitle"] ?
+					(title ?
+						title
+						: "Pale Blue Dot")
+					: ""}
+				</b>
+			</p>
 			<p style={{
+					position: "absolute",
+					bottom: 0,
+					right: 16,
+				}}>{CONFIG["showApodText"] ? 
+					(title || !CONFIG["displayErrorsInApodText"] ? 
+						"NASA Astronomy Picture of the Day"
+						: "Connection error! Did you supply an API key?")
+					: ""}
+			</p>
+			<img src="apod/sf_play.png" style={{
+				width: 32,
+				height: 32,
+				display: (is_video && CONFIG["showVideoPlayButton"] ? "inline" : "none"),
 				position: "absolute",
-				bottom: 0,
-				right: 16,
-			}}>{title ? (showApodText ? "NASA Astronomy Picture of the Day" : "") : "Connection error! Did you supply an API key?"}</p>
-			<img src={imgUrl ? imgUrl : "apod/pale_blue_dot.webp"} style={{
+				top: "calc(50% - 16px)",
+				left: "calc(50% - 16px)"
+			}}></img>
+			<img src={imgUrl ? 
+				(is_video ?
+					thumbnailUrl
+					: imgUrl)
+				: "apod/pale_blue_dot.webp"} style={{
 				width: "100%",
 				height: "100%",
-				objectFit: "cover",
+				objectFit: "cover"
 			}}></img>
 		</a>
   );

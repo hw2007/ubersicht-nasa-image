@@ -1,0 +1,13 @@
+{
+	"apiKey": "Paste your NASA API key here!",
+	"showApodText": true,
+	"displayErrorsInApodText": true,
+	"showTitle": true,
+	"showVideoPlayButton": true,
+	"widgetPosition": {
+		"top": 0,
+		"bottom": "auto",
+		"left": 0,
+		"right": "auto"
+	}
+}
