@@ -17,7 +17,7 @@ export const render = ({ output }) => {
 
   	return (
 		<a
-			href={imgUrl}
+			href={CONFIG["openImageSource"] ? imgUrl : "https://apod.nasa.gov/apod/"}
 			style={{
 				borderRadius: 12,
 				position: "fixed",

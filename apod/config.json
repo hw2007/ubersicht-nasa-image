@@ -4,6 +4,7 @@
 	"displayErrorsInApodText": true,
 	"showTitle": true,
 	"showVideoPlayButton": true,
+	"openImageSource": true,
 	"widgetPosition": {
 		"top": 0,
 		"bottom": "auto",
