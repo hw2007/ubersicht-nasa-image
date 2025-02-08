@@ -33,4 +33,6 @@ Description of each option:
 
 `showVideoPlayButton` Wether or not to show a play button in the middle of the widget if the APOD is a video. Default `true`.
 
+`openImageSource` If `true`, clicking the widget will open the APOD image URL in your browser. If `false`, the NASA APOD page will open instead. Default `true`.
+
 `widgetPosition` CSS positioning of the widget. Default `{"top": 300, "bottom": "auto", "left": 0, "right": "auto}`.
